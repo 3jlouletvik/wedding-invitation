@@ -67,8 +67,8 @@ img {
 /* --- Divider --- */
 .divider {
     width: 60px;
-    height: 1px;
-    background: #c9b8a8;
+    height: 2px;
+    background: linear-gradient(90deg, #c9a84c, #d4a574, #e8a0b4);
     margin: 20px auto 32px;
 }
 
@@ -93,7 +93,8 @@ img {
 }
 
 .btn:hover {
-    background: #8b7355;
+    background: linear-gradient(135deg, #c9a84c, #8b7355);
+    border-color: #c9a84c;
     color: #fff;
 }
 
@@ -146,7 +147,7 @@ img {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(255, 253, 248, 0.55);
+    background: rgba(255, 253, 248, 0.3);
     z-index: 1;
 }
 
@@ -257,11 +258,11 @@ img {
    3. LOCATION
    ======================================== */
 .location {
-    background: #faf6f0;
+    background: linear-gradient(135deg, #faf6f0 0%, #f5ede4 50%, #fce8d5 100%);
 }
 
 .location-icon {
-    color: #8b7355;
+    color: #c9a84c;
     margin-bottom: 24px;
 }
 
@@ -331,7 +332,7 @@ img {
    5. TIMELINE
    ======================================== */
 .timeline {
-    background: #faf6f0;
+    background: linear-gradient(135deg, #faf6f0 0%, #f5ede4 50%, #fce8d5 100%);
 }
 
 .timeline-list {
@@ -353,14 +354,16 @@ img {
 
 .timeline-icon {
     flex-shrink: 0;
-    width: 52px;
-    height: 52px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
-    border: 1px solid #c9b8a8;
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #8b7355;
+    color: #fff;
+    background: linear-gradient(135deg, #d4a574, #c9a84c);
+    box-shadow: 0 4px 15px rgba(201, 168, 76, 0.3);
 }
 
 .timeline-time {
@@ -381,7 +384,14 @@ img {
    6. DRESS CODE
    ======================================== */
 .dresscode {
-    background: #faf6f0;
+    background: linear-gradient(135deg, #faf6f0 0%, #f5ede4 50%, #fce8d5 100%);
+}
+
+.dresscode-intro {
+    font-size: 0.95rem;
+    color: #7a6a5a;
+    max-width: 480px;
+    margin: 0 auto 8px;
 }
 
 .color-palette {
@@ -445,7 +455,7 @@ img {
 }
 
 .dresscode-icon {
-    color: #8b7355;
+    color: #c9a84c;
     margin-bottom: 16px;
 }
 
@@ -464,7 +474,7 @@ img {
    8. WISHES
    ======================================== */
 .wishes {
-    background: #faf6f0;
+    background: linear-gradient(135deg, #faf6f0 0%, #f5ede4 50%, #fce8d5 100%);
 }
 
 .wishes-photos {
@@ -513,7 +523,7 @@ img {
 }
 
 .wish-icon {
-    color: #8b7355;
+    color: #c9a84c;
     margin-bottom: 16px;
 }
 
@@ -572,7 +582,7 @@ img {
    10. RSVP
    ======================================== */
 .rsvp {
-    background: #faf6f0;
+    background: linear-gradient(135deg, #faf6f0 0%, #f5ede4 50%, #fce8d5 100%);
 }
 
 .rsvp-subtitle {
@@ -796,11 +806,11 @@ img {
 .final {
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     position: relative;
     background: #5a4a3a;
-    padding: 80px 0;
+    padding: 0 0 80px 0;
     overflow: hidden;
 }
 
@@ -866,6 +876,47 @@ img {
 }
 
 /* ========================================
+   FOOTER
+   ======================================== */
+.site-footer {
+    background: #3a2f25;
+    padding: 24px 20px;
+    text-align: center;
+}
+
+.site-footer p {
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.35);
+    line-height: 1.6;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   TELEGRAM INVITE (RSVP success)
+   ======================================== */
+.telegram-invite-text {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 0.9rem !important;
+    color: #7a6a5a;
+    margin: 16px 0 20px;
+    line-height: 1.6;
+}
+
+.btn-telegram {
+    background: linear-gradient(135deg, #229ED9, #1a8bc7);
+    border-color: #229ED9;
+    color: #fff;
+    display: inline-block;
+    margin-top: 8px;
+}
+
+.btn-telegram:hover {
+    background: linear-gradient(135deg, #1a8bc7, #1576a8);
+    border-color: #1a8bc7;
+}
+
+/* ========================================
    RESPONSIVE
    ======================================== */
 @media (max-width: 768px) {
@@ -879,7 +930,7 @@ img {
 
     /* Hero — stronger overlay for mobile readability */
     .hero-overlay {
-        background: rgba(255, 253, 248, 0.65);
+        background: rgba(255, 253, 248, 0.45);
     }
 
     .hero-names {
@@ -1012,8 +1063,8 @@ img {
     }
 
     .timeline-icon {
-        width: 44px;
-        height: 44px;
+        width: 48px;
+        height: 48px;
     }
 
     .timeline-time {
@@ -1077,7 +1128,7 @@ img {
 }
 
 .timeline-item:hover .timeline-icon {
-    background: rgba(139, 115, 85, 0.08);
+    background: linear-gradient(135deg, #c9a84c, #d4a574);
     transform: scale(1.1);
 }
 

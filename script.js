@@ -59,19 +59,7 @@ function initGSAP() {
             });
         });
 
-        var finalBg = document.querySelector('.final-bg');
-        if (finalBg) {
-            gsap.fromTo(finalBg, { y: -60 }, {
-                y: 60,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: '#final',
-                    start: 'top bottom',
-                    end: 'bottom top',
-                    scrub: true
-                }
-            });
-        }
+        // Final parallax removed per client request
     }
 
     // Stagger animations — faster on mobile
@@ -123,16 +111,7 @@ function initGSAP() {
         scrollTrigger: { trigger: '.color-palette', start: startPos, once: true }
     });
 
-    // Countdown
-    gsap.fromTo('.countdown-item', {
-        opacity: 0, y: 20, scale: 0.8
-    }, {
-        opacity: 1, y: 0, scale: 1,
-        duration: 0.5,
-        stagger: 0.1,
-        ease: 'back.out(1.5)',
-        scrollTrigger: { trigger: '.countdown', start: startPos, once: true }
-    });
+    // Countdown animation removed per client request
 
     // Coordinator list
     gsap.fromTo('.coordinator-list li', {
@@ -241,6 +220,11 @@ function initRSVP() {
         .then(function (data) {
             form.style.display = 'none';
             successMsg.style.display = 'block';
+            // Show Telegram chat invite if guest is attending
+            if (attendance.value === 'Буду') {
+                var inviteBlock = document.getElementById('telegramInvite');
+                if (inviteBlock) inviteBlock.style.display = 'block';
+            }
         })
         .catch(function (err) {
             alert('Ошибка отправки. Попробуйте позже.');
