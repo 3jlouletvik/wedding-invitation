@@ -242,6 +242,7 @@ function initMusic() {
     var iconOff = btn.querySelector('.music-icon-off');
     var iconOn = btn.querySelector('.music-icon-on');
     var isPlaying = false;
+    audio.volume = 0.3;
 
     function toggleMusic() {
         if (isPlaying) {

@@ -332,12 +332,12 @@ img {
    5. TIMELINE
    ======================================== */
 .timeline {
-    background: linear-gradient(135deg, #faf6f0 0%, #f5ede4 50%, #fce8d5 100%);
+    background: linear-gradient(180deg, #fffdf8 0%, #f5ede4 30%, #fce8d5 100%);
 }
 
 .timeline-list {
     max-width: 400px;
-    margin: 40px auto 0;
+    margin: 16px auto 0;
 }
 
 .timeline-item {
