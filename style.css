@@ -876,6 +876,42 @@ img {
 }
 
 /* ========================================
+   MUSIC BUTTON
+   ======================================== */
+.music-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #c9a84c, #d4a574);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 4px 20px rgba(201, 168, 76, 0.4);
+    transition: all 0.3s ease;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(201, 168, 76, 0.5);
+}
+
+.music-btn.playing {
+    animation: musicPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes musicPulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(201, 168, 76, 0.4); }
+    50% { box-shadow: 0 4px 30px rgba(201, 168, 76, 0.7); }
+}
+
+/* ========================================
    FOOTER
    ======================================== */
 .site-footer {

@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initCountdown();
     initRSVP();
     initGSAP();
+    initMusic();
 });
 
 // ---- GSAP ANIMATIONS ----
@@ -232,4 +233,50 @@ function initRSVP() {
             submitBtn.disabled = false;
         });
     });
+}
+
+// ---- MUSIC ----
+function initMusic() {
+    var audio = document.getElementById('bgMusic');
+    var btn = document.getElementById('musicBtn');
+    var iconOff = btn.querySelector('.music-icon-off');
+    var iconOn = btn.querySelector('.music-icon-on');
+    var isPlaying = false;
+
+    function toggleMusic() {
+        if (isPlaying) {
+            audio.pause();
+            btn.classList.remove('playing');
+            iconOff.style.display = '';
+            iconOn.style.display = 'none';
+        } else {
+            audio.play();
+            btn.classList.add('playing');
+            iconOff.style.display = 'none';
+            iconOn.style.display = '';
+        }
+        isPlaying = !isPlaying;
+    }
+
+    btn.addEventListener('click', toggleMusic);
+
+    // Try autoplay on first user interaction (scroll/touch)
+    var autoplayTriggered = false;
+    function tryAutoplay() {
+        if (autoplayTriggered) return;
+        autoplayTriggered = true;
+        audio.play().then(function () {
+            isPlaying = true;
+            btn.classList.add('playing');
+            iconOff.style.display = 'none';
+            iconOn.style.display = '';
+        }).catch(function () {
+            // Autoplay blocked, user must click button
+        });
+        window.removeEventListener('scroll', tryAutoplay);
+        window.removeEventListener('touchstart', tryAutoplay);
+    }
+
+    window.addEventListener('scroll', tryAutoplay, { once: true });
+    window.addEventListener('touchstart', tryAutoplay, { once: true });
 }
