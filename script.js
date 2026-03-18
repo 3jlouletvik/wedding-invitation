@@ -221,11 +221,9 @@ function initRSVP() {
         .then(function (data) {
             form.style.display = 'none';
             successMsg.style.display = 'block';
-            // Show Telegram chat invite if guest is attending
-            if (attendance.value === 'Буду') {
-                var inviteBlock = document.getElementById('telegramInvite');
-                if (inviteBlock) inviteBlock.style.display = 'block';
-            }
+            // Show Telegram chat invite after form submission
+            var inviteBlock = document.getElementById('telegramInvite');
+            if (inviteBlock) inviteBlock.style.display = 'block';
         })
         .catch(function (err) {
             alert('Ошибка отправки. Попробуйте позже.');
