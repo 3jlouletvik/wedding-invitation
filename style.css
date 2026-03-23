@@ -193,6 +193,7 @@ img {
     text-transform: uppercase;
     color: #5a4a3a;
     text-shadow: 0 1px 6px rgba(255, 253, 248, 0.8);
+    margin-bottom: 24px;
 }
 
 .hero-scroll {
@@ -897,9 +898,11 @@ img {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 999;
+    z-index: 99999;
     box-shadow: 0 4px 20px rgba(201, 168, 76, 0.4);
     transition: all 0.3s ease;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 .music-btn:hover {
