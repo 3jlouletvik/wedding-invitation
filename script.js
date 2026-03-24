@@ -6,7 +6,7 @@
 // ---- CONFIG ----
 const WEDDING_DATE = '2026-06-20T15:00:00';
 const BOT_TOKEN = '8765845180:AAH7i-qSgmI1iz38SXCpzYYCM9qEYjhj7w0';
-const CHAT_ID = '-5228772246';
+const CHAT_ID = '-1003719664181';
 
 // ---- HELPERS ----
 var isMobile = window.innerWidth <= 768;
@@ -219,6 +219,12 @@ function initRSVP() {
         })
         .then(function (res) { return res.json(); })
         .then(function (data) {
+            if (!data.ok) {
+                alert('Telegram API ошибка: ' + data.description);
+                submitBtn.textContent = 'Отправить';
+                submitBtn.disabled = false;
+                return;
+            }
             form.style.display = 'none';
             successMsg.style.display = 'block';
             // Show Telegram chat invite after form submission
