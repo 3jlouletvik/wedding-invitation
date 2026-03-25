@@ -208,6 +208,9 @@ function initRSVP() {
         submitBtn.textContent = 'Отправка...';
         submitBtn.disabled = true;
 
+        var controller = new AbortController();
+        var fetchTimeout = setTimeout(function () { controller.abort(); }, 15000);
+
         fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -215,10 +218,12 @@ function initRSVP() {
                 chat_id: CHAT_ID,
                 text: text,
                 parse_mode: 'HTML'
-            })
+            }),
+            signal: controller.signal
         })
         .then(function (res) { return res.json(); })
         .then(function (data) {
+            clearTimeout(fetchTimeout);
             if (!data.ok) {
                 alert('Telegram API ошибка: ' + data.description);
                 submitBtn.textContent = 'Отправить';
@@ -232,7 +237,12 @@ function initRSVP() {
             if (inviteBlock) inviteBlock.style.display = 'block';
         })
         .catch(function (err) {
-            alert('Ошибка отправки. Попробуйте позже.');
+            clearTimeout(fetchTimeout);
+            if (err.name === 'AbortError') {
+                alert('Не удалось отправить. Проверьте интернет и попробуйте ещё раз.');
+            } else {
+                alert('Ошибка отправки. Попробуйте позже.');
+            }
             submitBtn.textContent = 'Отправить';
             submitBtn.disabled = false;
         });
